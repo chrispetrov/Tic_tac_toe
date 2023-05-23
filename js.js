@@ -38,9 +38,16 @@ function populateBoard(board){
         item.style.border = '1px solid blue'
         item.innerText= board[i]
         item.style.color='rgb(240, 238, 236)'
+        item.addEventListener('click', placeTile)
         divBoard.appendChild(item)
     }
     console.log(divBoard)
 }
 
 populateBoard(gameBoard);
+function placeTile(){
+    if(this.innerText=='undefined'){
+        console.log("works")
+    }
+    else console.log(this.innerText)
+}
