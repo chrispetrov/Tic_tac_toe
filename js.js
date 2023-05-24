@@ -37,17 +37,40 @@ function populateBoard(board){
         const item= document.createElement('div')
         item.style.border = '1px solid blue'
         item.innerText= board[i]
-        item.style.color='rgb(240, 238, 236)'
-        item.addEventListener('click', placeTile)
+        item.style.color='rgb(40, 28, 236)'
+        item.addEventListener('click', placeTile.bind(null,i,item))
         divBoard.appendChild(item)
     }
-    console.log(divBoard)
+    
+}
+// 1=X 2=0
+populateBoard(gameBoard);
+function placeTile(number,tile){
+    
+    
+
+    if(tile.innerText=='undefined'){
+        if(newguy.status){
+            newguy.status=false;
+            gameBoard.set(number,1);
+            
+            tile.innerText='X';
+        }
+        else{
+            //the oldguys turn
+            newguy.status=true;
+            gameBoard.set(number,2)
+            
+            tile.innerText='O';
+        }
+    }
+    else {console.log("This tile is already taken")}
+    
+    checkWon()
+    
 }
 
-populateBoard(gameBoard);
-function placeTile(){
-    if(this.innerText=='undefined'){
-        console.log("works")
-    }
-    else console.log(this.innerText)
+function checkWon(){
+    var gb=gameBoard.get()
+    
 }
